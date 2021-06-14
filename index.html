@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprise Vue js</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <p class="jumbotron">
+                    Login : <input type="text" v-model="user"> <br>
+                    Vous êtes connecté en tant que {{ user }}
+                </p>
+            </div>
+
+            <h1 class="diplay-4" v-if="commandes.length > 0">Produits commandés</h1>
+            <ul class="list-group list-group-flush">
+                <fiche-detail  v-for="commande in commandes" :commande="commande"></fiche-detail>
+            </ul>
+            
+            <h1 class="diplay-4">Produits disponibles</h1>
+
+            <div class="row">
+                <fiche-produit  v-for="produit in produits" :produit="produit" @commande="commander"></fiche-produit>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
